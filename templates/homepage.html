@@ -2,17 +2,27 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 
 <body>
 
-<h1>
-    The Tribe Research Collection
-    <span class="website-description">
-        The Tribe Research Collection is an application intended to help users learn about the research publications that William & Mary professors have been working on. Project data is web-scraped from William & Mary websites using Firecrawl, and summarized with GPT-4o. Built and deployed with Flask and Vercel. Clicking on each project card leads to the publication for the corresponding project. 
-    </span>
-</h1>
+<div id="header">
+    <div id="pfp-container">
+        <img src="../static/pfp.jpg" id="pfp">
+    </div>
+    <div id="text-content">
+        <div id="title">
+            Rachel Huang
+        </div>
+        <div id="description">
+            20 🇺🇸🇹🇼 • CS + Applied Math
+        </div>
+        <div id="description">
+            Incoming Software Engineer @ Black Cape, Inc.
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
