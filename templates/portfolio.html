@@ -2,14 +2,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="../static/styles.css">
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"> -->
 </head>
 
 <body>
 
 <div id="header">
     <div id="pfp-container">
-        <img src="{{url_for('static', filename='pfp.jpg')}}" id="pfp">
+        <img src="../static/pfp.jpg" id="pfp">
     </div>
     <div id="text-content">
         <div id="title">
@@ -31,13 +32,11 @@
     </div>
 </div>
 <div id="main-content">
-    <div>
-        I am a computer science and applied math double major at William & Mary (2023-2026). After graduation,
-        I will be working as a software engineer at Black Cape, Inc. in Arlington, Virginia.
-    </div>
-    <div>
-        I am currently conducting quantum optimization research via a ZX-calculus and genetic programming approach, funded
-        by NASA VSGC and Monroe Scholar scholarships. I also assist with SVBRDF graphics research, running model generation experiments.
+    <div class="image-container">
+        <img src="{{url_for('static', filename='research.jpg')}}" id="research">
+        <div class="overlay">
+            <div class="overlay-text">W&M 2025 Fall Undergraduate Research Symposium</div>
+        </div>
     </div>
 </div>
 

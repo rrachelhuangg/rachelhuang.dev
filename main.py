@@ -10,5 +10,9 @@ def home():
 def books():
     return render_template('books.html', active_tab='books')
 
+@app.route('/portfolio')
+def portfolio():
+    return render_template('portfolio.html', active_tab='portfolio')
+
 if __name__ == '__main__':
     app.run(debug=True)

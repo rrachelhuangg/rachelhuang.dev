@@ -27,9 +27,7 @@
 <div id="main-content">
     <div id="links">
         <a href="{{url_for('home')}}" class="{%if active_tab=='home'%}active{%endif%}">About</a>
-        <a href="google.com">
-            Portfolio
-        </a>
+        <a href="{{url_for('portfolio')}}" class="{%if active_tab=='portfolio'%}active{%endif%}">Portfolio</a>
         <a href="{{url_for('books')}}" class="{%if active_tab=='books'%}active{%endif%}">Reading List</a>
     </div>
 </div>
