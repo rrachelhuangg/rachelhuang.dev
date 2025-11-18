@@ -66,6 +66,16 @@ img{
     color: #eb4034;
 }
 
+#main-content a {
+    color: #525252;
+    text-decoration: underline;
+}
+
+#main-content a:hover {
+    color: #353535;
+    cursor: pointer;
+}
+
 ul {
     padding-left:1.5rem;
 }
@@ -113,7 +123,18 @@ li {
     padding: 1rem;
 }
 
-/* Mobile Styles */
+footer {
+    margin-top: 4rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+#footer-content {
+    text-align: center;
+    color: #8a8a8a;
+    font-size: 0.75rem;
+}
+
 @media screen and (max-width: 768px) {
     body {
         padding: 0 1rem;
@@ -166,7 +187,6 @@ li {
     }
 }
 
-/* Extra small devices */
 @media screen and (max-width: 480px) {
     #header {
         margin-top: 1.5rem;
