@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import json
 
 app = Flask(__name__)
 
@@ -10,3 +9,6 @@ def home():
 @app.route('/books')
 def books():
     return render_template('books.html', active_tab='books')
+
+if __name__ == '__main__':
+    app.run(debug=True)

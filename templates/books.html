@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles.css">
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}"> -->
 </head>
 
 <body>
@@ -25,13 +26,11 @@
 </div>
 <div id="main-content">
     <div id="links">
-        <a href="homepage.html">
-            About
-        </a>
+        <a href="{{url_for('home')}}" class="{%if active_tab=='home'%}active{%endif%}">About</a>
         <a href="google.com">
             Portfolio
         </a>
-        <a href="books.html" class="{%if active_tab=='books'%}active{%endif%}">Reading List</a>
+        <a href="{{url_for('books')}}" class="{%if active_tab=='books'%}active{%endif%}">Reading List</a>
     </div>
 </div>
 <div id="main-content">
