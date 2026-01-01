@@ -5,6 +5,16 @@ body {
     color: #525252;
 }
 
+.banner-text {
+    text-align: center;
+    margin-top: 2rem;
+    color: #525252;
+    letter-spacing: 0.9px;
+    max-width: 33rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #header {
     display: flex;
     flex-direction: row;
@@ -140,6 +150,13 @@ footer {
         padding: 0 1rem;
     }
 
+    .banner-text {
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+
     #header {
         flex-direction: column;
         align-items: center;
@@ -188,6 +205,12 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
+    .banner-text {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        padding: 0 0.5rem;
+    }
+
     #header {
         margin-top: 1.5rem;
         gap: 1rem;
