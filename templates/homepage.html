@@ -11,41 +11,172 @@
 <body>
 
 <div id="header">
-    <div id="pfp-container">
+    <!-- <div id="pfp-container">
         <img src="{{url_for('static', filename='pfp.png')}}" id="pfp">
-    </div>
+    </div> -->
     <div id="text-content">
         <div id="title">
             Rachel Huang
         </div>
         <div id="description">
-            20 🇺🇸🇹🇼 • CS + Applied Math
-        </div>
-        <div id="description">
-            Incoming Software Engineer @ Black Cape, Inc.
+            Software Engineer @ Black Cape, Inc.
         </div>
     </div>
 </div>
-<div class="banner-text">
+<!-- <div class="banner-text">
     "Apart from scones, Robin’s other great indulgence was novels." - Babel, R.F. Kuang
-</div>
-<div id="main-content">
-    <div id="links">
-        <a href="{{url_for('home')}}" class="{%if active_tab=='home'%}active{%endif%}">About</a>
-        <a href="{{url_for('portfolio')}}" class="{%if active_tab=='portfolio'%}active{%endif%}">Portfolio</a>
-        <a href="{{url_for('books')}}" class="{%if active_tab=='books'%}active{%endif%}">Reading List</a>
-    </div>
-</div>
+</div> -->
 <div id="main-content">
     <div>
-        I am a computer science and applied math double major at William & Mary (2023-2026). After graduation,
-        I will be working as a software engineer at Black Cape, Inc. in Arlington, Virginia.
-    </div>
-    <div>
-        I am currently conducting quantum optimization research via a ZX-calculus and genetic programming approach, funded
-        by NASA VSGC and Monroe Scholar scholarships. I recently took and passed the IBM Qiskit v2.X Developer Exam, and am now officially Qiskit certified.
+        I am a recent graduate of William & Mary where I completed a double major in computer science and applied mathematics
+        in three years. I have been working as a software engineer at Black Cape, Inc. in Arlington, Virginia since August 2026.
     </div>
 </div>
+<div id="main-content">
+    <div class="carousel" id="portfolio-carousel">
+        <button class="carousel-btn prev" aria-label="Previous slide">&#8249;</button>
+        <div class="carousel-viewport">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='monroe-poster.jpg')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">Summer 2025 James Monroe Scholar Research Poster</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='elias_paparis.jpg')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">Receiving the W&M Elias Paparis Fellowship Award at graduation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='research.jpg')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">W&M 2025 Fall Undergraduate Research Symposium</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='club-meeting.jpeg')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">2025 Opening Meeting of W&M AI Club as Head of Project Development</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='evening_of_excellence.jpeg')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">Recognized by the CS Department at the W&M Evening of Excellence Event</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='family_weekend_cropped.png')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">Selected to present for the W&M CS Department at the 2025 Family Weekend Event</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='2026_vsgc_conference_poster.png')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">2025-2026 NASA Virginia Space Grant Consortium Research Poster</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="image-container">
+                        <img src="{{url_for('static', filename='2026_vsgc_conference.jpg')}}">
+                        <div class="overlay">
+                            <div class="overlay-text">2025-2026 NASA Virginia Space Grant Consortium Conference</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-btn next" aria-label="Next slide">&#8250;</button>
+        <div class="carousel-dots"></div>
+    </div>
+</div>
+<script>
+    (function() {
+        const carousel = document.getElementById('portfolio-carousel');
+        const track = carousel.querySelector('.carousel-track');
+        const originals = Array.from(carousel.querySelectorAll('.carousel-slide'));
+        const total = originals.length;
+        const prevBtn = carousel.querySelector('.carousel-btn.prev');
+        const nextBtn = carousel.querySelector('.carousel-btn.next');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+
+        const firstClone = originals[0].cloneNode(true);
+        const lastClone = originals[total - 1].cloneNode(true);
+        firstClone.setAttribute('aria-hidden', 'true');
+        lastClone.setAttribute('aria-hidden', 'true');
+        track.appendChild(firstClone);
+        track.insertBefore(lastClone, originals[0]);
+
+        let index = 1;
+        let isAnimating = false;
+
+        function setPosition(withTransition) {
+            if (!withTransition) track.style.transition = 'none';
+            track.style.transform = 'translateX(-' + (index * 100) + '%)';
+            if (!withTransition) {
+                track.offsetHeight;
+                track.style.transition = '';
+            }
+        }
+        setPosition(false);
+
+        originals.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            dot.addEventListener('click', () => goTo(i + 1));
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateDots() {
+            let real = index - 1;
+            if (real < 0) real = total - 1;
+            if (real >= total) real = 0;
+            dotsContainer.querySelectorAll('.dot').forEach((d, di) => {
+                d.classList.toggle('active', di === real);
+            });
+        }
+
+        function goTo(i) {
+            if (isAnimating) return;
+            isAnimating = true;
+            index = i;
+            setPosition(true);
+            updateDots();
+        }
+
+        track.addEventListener('transitionend', () => {
+            isAnimating = false;
+            if (index === 0) {
+                index = total;
+                setPosition(false);
+            } else if (index === total + 1) {
+                index = 1;
+                setPosition(false);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => goTo(index - 1));
+        nextBtn.addEventListener('click', () => goTo(index + 1));
+    })();
+</script>
 
 <footer>
     <div id="footer-content">
