@@ -120,6 +120,7 @@
             </div>
         </div>
         <button class="carousel-btn next" aria-label="Next slide">&#8250;</button>
+        <div class="carousel-caption"></div>
         <div class="carousel-dots"></div>
     </div>
 </div>
@@ -132,6 +133,11 @@
         const prevBtn = carousel.querySelector('.carousel-btn.prev');
         const nextBtn = carousel.querySelector('.carousel-btn.next');
         const dotsContainer = carousel.querySelector('.carousel-dots');
+        const captionEl = carousel.querySelector('.carousel-caption');
+        const captions = originals.map(slide => {
+            const text = slide.querySelector('.overlay-text');
+            return text ? text.textContent.trim() : '';
+        });
 
         const firstClone = originals[0].cloneNode(true);
         const lastClone = originals[total - 1].cloneNode(true);
@@ -161,14 +167,24 @@
             dotsContainer.appendChild(dot);
         });
 
-        function updateDots() {
+        function realIndex() {
             let real = index - 1;
             if (real < 0) real = total - 1;
             if (real >= total) real = 0;
+            return real;
+        }
+
+        function updateDots() {
+            const real = realIndex();
             dotsContainer.querySelectorAll('.dot').forEach((d, di) => {
                 d.classList.toggle('active', di === real);
             });
         }
+
+        function updateCaption() {
+            captionEl.textContent = captions[realIndex()];
+        }
+        updateCaption();
 
         function goTo(i) {
             if (isAnimating) return;
@@ -176,6 +192,7 @@
             index = i;
             setPosition(true);
             updateDots();
+            updateCaption();
         }
 
         track.addEventListener('transitionend', () => {
