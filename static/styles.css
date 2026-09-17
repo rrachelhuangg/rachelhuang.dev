@@ -212,6 +212,21 @@ li {
     background: #272727;
 }
 
+.footer-link {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-link a {
+    color: #3098e7;
+    text-decoration: underline;
+}
+
+.footer-link a:hover {
+    cursor: pointer;
+}
+
 footer {
     margin-top: 4rem;
     padding: 1.5rem 0;
